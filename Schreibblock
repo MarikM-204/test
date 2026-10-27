@@ -177,11 +177,6 @@
             </div>
 
             <div class="va-field">
-              <label for="email">E-Mail</label>
-              <input id="email" type="email" placeholder="E-Mail-Adresse eingeben" />
-            </div>
-
-            <div class="va-field">
               <label for="aktenzeichen">Aktenzeichen</label>
               <input id="aktenzeichen" placeholder="Aktenzeichen eingeben" />
             </div>
@@ -235,7 +230,6 @@
         <div id="app-status" class="va-message" role="status" aria-live="polite"></div>
       </div>
     </section>
-
     <!-- ANTRAGSLISTEN -->
     <section id="va-list-page" class="va-page" hidden>
       <button type="button" class="va-back" data-page="home">← Zur Startseite</button>
@@ -303,43 +297,24 @@
 
 <style>
 #veteranen-app {
-
   --navy:#18334d;
-
   --blue:#285b80;
-
   --bg:#f3f6f9;
-
   --border:#dce4eb;
-
   --text:#263746;
-
   --muted:#667787;
-
   color:var(--text);
-
   background:var(--bg);
-
   border:0;
-
   border-radius:0;
-
   overflow:hidden;
-
   display:block;
-
   width:100%;
-
   max-width:none;
-
   margin:0;
-
   box-sizing:border-box;
-
   font-family:"Segoe UI",Arial,sans-serif;
-
   font-size:14px;
-
 }
 
 /* Außenabstände im eingebetteten WebView reduzieren */
@@ -501,7 +476,6 @@ body {
 #veteranen-app .va-tile-title{color:var(--navy);font-weight:700;font-size:15px}
 #veteranen-app .va-tile-description{color:var(--muted);font-size:12px;line-height:1.5}
 #veteranen-app .va-tile-arrow{margin-top:auto;color:var(--blue);font-size:12px;font-weight:700}
-
 #veteranen-app .va-page-heading{margin:18px 0 20px}
 #veteranen-app .va-back{border:0;background:transparent;padding:5px 0;color:var(--blue);font-weight:600}
 #veteranen-app .va-back:hover{text-decoration:underline}
@@ -863,7 +837,6 @@ body {
       root.scrollIntoView({behavior:"smooth", block:"start"});
     }
   }
-
   root.addEventListener("click", function (event) {
     const editButton = event.target.closest("button[data-edit-id]");
 
@@ -916,7 +889,7 @@ body {
     }
 
     let html = "<table><thead><tr>" +
-      "<th>Vorname</th><th>Nachname</th><th>E-Mail</th>" +
+      "<th>Vorname</th><th>Nachname</th>" +
       "<th>Aktenzeichen</th><th>Antrag vom</th><th>Eingangsdatum</th>" +
       "<th>Status</th><th>Termin</th><th>Wiedervorlage</th><th>Aktion</th>" +
       "</tr></thead><tbody>";
@@ -927,15 +900,9 @@ body {
         s === statusAbgeschlossen || s === statusErledigt ? "va-done" :
         s === "Rückfrage erwartet" || s === "Termin vereinbaren" ? "va-wait" : "";
 
-      const email = String(item.Email || "");
-      const emailAnzeige = email
-        ? '<a href="mailto:' + sicher(email) + '">' + sicher(email) + '</a>'
-        : "";
-
       html += "<tr>" +
         "<td>" + sicher(item.Title) + "</td>" +
         "<td>" + sicher(item.Nachname) + "</td>" +
-        "<td>" + emailAnzeige + "</td>" +
         "<td>" + sicher(item.Aktenzeichen) + "</td>" +
         "<td>" + sicher(datumAnzeigen(item[feldAntragVom])) + "</td>" +
         "<td>" + sicher(datumAnzeigen(item.Eingangsdatum)) + "</td>" +
@@ -953,7 +920,7 @@ body {
 
   async function laden() {
     const url = api +
-      "/items?$select=Id,Title,Nachname,Email," + feldAntragVom +
+      "/items?$select=Id,Title,Nachname," + feldAntragVom +
       ",Aktenzeichen,Eingangsdatum,Status,Termin,Wiedervorlage,Bemerkung" +
       "&$top=100&$orderby=Id desc";
 
@@ -1102,7 +1069,6 @@ body {
       postBestaetigen.textContent = "✓ Weiterleitung per E-Mail bestätigen";
     }
   });
-
   neuLaden.addEventListener("click", async function () {
     neuLaden.disabled = true;
     neuLaden.textContent = "Wird geladen …";
@@ -1142,7 +1108,6 @@ body {
 
     try {
       const vorname = document.getElementById("vorname").value.trim();
-      const email = document.getElementById("email").value.trim();
 
       if (!vorname) throw new Error("Bitte gib einen Vornamen ein.");
 
@@ -1153,7 +1118,6 @@ body {
         "__metadata": {"type": typ},
         "Title": vorname,
         "Nachname": document.getElementById("nachname").value.trim(),
-        "Email": email,
         [feldAntragVom]: datumFeld("antragVom"),
         "Aktenzeichen": document.getElementById("aktenzeichen").value.trim(),
         "Eingangsdatum": datumFeld("eingangsdatum"),
