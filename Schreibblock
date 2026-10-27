@@ -1,0 +1,1246 @@
+<div id="veteranen-app">
+  <header class="va-header">
+    <button class="va-brand" type="button" data-page="home">
+      <span class="va-emblem">VA</span>
+      <span class="va-brand-text">
+        <span class="va-eyebrow">ANTRAGSVERWALTUNG</span>
+        <strong>Veteranenabzeichen</strong>
+        <span class="va-brand-sub">Verwaltungsportal</span>
+      </span>
+    </button>
+    <span class="va-header-tag">SharePoint</span>
+  </header>
+
+  <nav class="va-topnav" aria-label="Hauptnavigation">
+    <button type="button" data-page="home" class="va-nav active">⌂ Startseite</button>
+    <button type="button" data-page="statistics" class="va-nav">▥ Statistik</button>
+  </nav>
+
+  <main class="va-main">
+    <!-- STARTSEITE -->
+    <section id="va-home" class="va-page">
+      <div class="va-welcome">
+        <div class="va-eyebrow">WILLKOMMEN</div>
+        <h1>Antragsverwaltung</h1>
+        <p>Was möchtest du heute bearbeiten?</p>
+      </div>
+
+      <div class="va-home-heading">
+        <h2>Direktzugriff</h2>
+        <p>Wähle einen Bereich aus.</p>
+      </div>
+
+      <div class="va-tiles">
+        <button type="button" class="va-tile va-tile-primary" data-page="form">
+          <span class="va-tile-icon">+</span>
+          <span class="va-tile-title">Antrag erfassen</span>
+          <span class="va-tile-description">Einen neuen Antrag in SharePoint anlegen</span>
+          <span class="va-tile-arrow">Öffnen →</span>
+        </button>
+
+        <button type="button" class="va-tile" data-page="status" data-status="Eingegangen">
+          <span class="va-tile-icon">01</span>
+          <span class="va-tile-title">Eingegangen</span>
+          <span class="va-tile-description">Neu eingegangene Anträge</span>
+          <span class="va-tile-arrow">Anträge anzeigen →</span>
+        </button>
+
+        <button type="button" class="va-tile" data-page="status" data-status="In Bearbeitung">
+          <span class="va-tile-icon">02</span>
+          <span class="va-tile-title">In Bearbeitung</span>
+          <span class="va-tile-description">Laufende Vorgänge</span>
+          <span class="va-tile-arrow">Anträge anzeigen →</span>
+        </button>
+
+        <button type="button" class="va-tile" data-page="status" data-status="Termin vereinbaren">
+          <span class="va-tile-icon">03</span>
+          <span class="va-tile-title">Termin vereinbaren</span>
+          <span class="va-tile-description">Termine müssen abgestimmt werden</span>
+          <span class="va-tile-arrow">Anträge anzeigen →</span>
+        </button>
+
+        <button type="button" class="va-tile" data-page="status" data-status="Termin vereinbart">
+          <span class="va-tile-icon">04</span>
+          <span class="va-tile-title">Termin vereinbart</span>
+          <span class="va-tile-description">Bereits terminierte Vorgänge</span>
+          <span class="va-tile-arrow">Anträge anzeigen →</span>
+        </button>
+
+        <button type="button" class="va-tile" data-page="status" data-status="Rückfrage erwartet">
+          <span class="va-tile-icon">05</span>
+          <span class="va-tile-title">Rückfrage erwartet</span>
+          <span class="va-tile-description">Ausstehende Rückmeldungen</span>
+          <span class="va-tile-arrow">Anträge anzeigen →</span>
+        </button>
+
+        <button type="button" class="va-tile" data-page="status" data-status="Per Post an BAPersBw melden">
+          <span class="va-tile-icon">✉</span>
+          <span class="va-tile-title">Post an BAPersBw</span>
+          <span class="va-tile-description">Anträge zur Weiterleitung per E-Mail</span>
+          <span class="va-tile-arrow">Übersicht öffnen →</span>
+        </button>
+
+        <button type="button" class="va-tile" data-page="status" data-status="Postalisch erledigt">
+          <span class="va-tile-icon">✓</span>
+          <span class="va-tile-title">Postalisch abgeschlossen</span>
+          <span class="va-tile-description">Bestätigte Weiterleitungen</span>
+          <span class="va-tile-arrow">Übersicht öffnen →</span>
+        </button>
+
+        <button type="button" class="va-tile" data-page="status" data-status="Abgeschlossen">
+          <span class="va-tile-icon">✓</span>
+          <span class="va-tile-title">Abgeschlossen</span>
+          <span class="va-tile-description">Abgeschlossene Vorgänge</span>
+          <span class="va-tile-arrow">Anträge anzeigen →</span>
+        </button>
+
+        <button type="button" class="va-tile" data-page="all">
+          <span class="va-tile-icon">≡</span>
+          <span class="va-tile-title">Alle Anträge</span>
+          <span class="va-tile-description">Alle geladenen Anträge im Überblick</span>
+          <span class="va-tile-arrow">Übersicht öffnen →</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- STATISTIK -->
+    <section id="va-statistics-page" class="va-page" hidden>
+      <div class="va-page-heading">
+        <div class="va-eyebrow">AUSWERTUNG</div>
+        <h1>Statistik</h1>
+        <p>Aktuelle Kennzahlen aus der SharePoint-Antragsliste.</p>
+      </div>
+
+      <div class="va-statistics-grid">
+        <article class="va-statistic-card va-statistic-blue">
+          <div class="va-statistic-icon">🏅</div>
+          <div class="va-statistic-label">Verleihungen in Berlin gesamt</div>
+          <strong id="stat-berlin">–</strong>
+          <p>Einträge mit dem Status „Abgeschlossen“</p>
+        </article>
+
+        <article class="va-statistic-card va-statistic-green">
+          <div class="va-statistic-icon">✉</div>
+          <div class="va-statistic-label">Postalisch verschickte Anträge gesamt</div>
+          <strong id="stat-postalisch">–</strong>
+          <p>Einträge mit dem Status „Postalisch erledigt“</p>
+        </article>
+
+        <article class="va-statistic-card">
+          <div class="va-statistic-icon">▤</div>
+          <div class="va-statistic-label">Anträge gesamt</div>
+          <strong id="stat-gesamt">–</strong>
+          <p>Alle geladenen Einträge</p>
+        </article>
+      </div>
+
+      <div class="va-card va-statistics-footer">
+        <div>
+          <h3>Statistik aktualisieren</h3>
+          <p class="va-muted">Die Zahlen werden aus den geladenen SharePoint-Einträgen berechnet.</p>
+        </div>
+        <button type="button" id="statistik-neu-laden" class="va-primary-button">
+          ↻ Statistik aktualisieren
+        </button>
+        <div id="statistik-meldung" class="va-message" role="status" aria-live="polite"></div>
+      </div>
+
+      <p class="va-statistics-note">
+        Hinweis: Die Zahl der Berliner Verleihungen entspricht aktuell der Zahl
+        der Anträge mit dem Status „Abgeschlossen“. Das ist nur dann die richtige
+        Verleihungszahl, wenn jeder abgeschlossene Antrag tatsächlich einer
+        Verleihung in Berlin entspricht.
+      </p>
+    </section>
+
+    <!-- ANTRAG ERFASSEN -->
+    <section id="va-form-page" class="va-page" hidden>
+      <button type="button" class="va-back" data-page="home">← Zur Startseite</button>
+
+      <div class="va-page-heading">
+        <div class="va-eyebrow">NEUER VORGANG</div>
+        <h1>Antrag erfassen</h1>
+        <p>Die Angaben werden in deiner SharePoint-Liste gespeichert.</p>
+      </div>
+
+      <div class="va-card">
+        <form id="antrag-form">
+          <div class="va-fields">
+            <div class="va-field">
+              <label for="vorname">Vorname <span>*</span></label>
+              <input id="vorname" required placeholder="Vorname eingeben" />
+            </div>
+
+            <div class="va-field">
+              <label for="nachname">Nachname</label>
+              <input id="nachname" placeholder="Nachname eingeben" />
+            </div>
+
+            <div class="va-field">
+              <label for="email">E-Mail</label>
+              <input id="email" type="email" placeholder="E-Mail-Adresse eingeben" />
+            </div>
+
+            <div class="va-field">
+              <label for="aktenzeichen">Aktenzeichen</label>
+              <input id="aktenzeichen" placeholder="Aktenzeichen eingeben" />
+            </div>
+
+            <div class="va-field">
+              <label for="antragVom">Antrag vom</label>
+              <input id="antragVom" type="date" />
+            </div>
+
+            <div class="va-field">
+              <label for="eingangsdatum">Eingangsdatum</label>
+              <input id="eingangsdatum" type="date" />
+            </div>
+
+            <div class="va-field">
+              <label for="status">Bearbeitungsstatus</label>
+              <select id="status">
+                <option selected>Eingegangen</option>
+                <option>In Bearbeitung</option>
+                <option>Termin vereinbaren</option>
+                <option>Termin vereinbart</option>
+                <option>Rückfrage erwartet</option>
+                <option>Per Post an BAPersBw melden</option>
+                <option>Postalisch erledigt</option>
+                <option>Abgeschlossen</option>
+              </select>
+            </div>
+
+            <div class="va-field">
+              <label for="termin">Termin</label>
+              <input id="termin" type="date" />
+            </div>
+
+            <div class="va-field">
+              <label for="wiedervorlage">Wiedervorlage</label>
+              <input id="wiedervorlage" type="date" />
+            </div>
+
+            <div class="va-field va-wide">
+              <label for="bemerkung">Bemerkung</label>
+              <textarea id="bemerkung" rows="3" placeholder="Ergänzende Hinweise …"></textarea>
+            </div>
+          </div>
+
+          <div class="va-form-footer">
+            <p class="va-required">* Pflichtfeld</p>
+            <button id="speichern" type="submit" class="va-primary-button">✓ Antrag speichern</button>
+          </div>
+        </form>
+
+        <div id="app-status" class="va-message" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ANTRAGSLISTEN -->
+    <section id="va-list-page" class="va-page" hidden>
+      <button type="button" class="va-back" data-page="home">← Zur Startseite</button>
+
+      <div class="va-page-heading">
+        <div class="va-eyebrow">VORGANGSÜBERSICHT</div>
+        <h1 id="va-list-title">Alle Anträge</h1>
+        <p id="va-list-description">Übersicht der Anträge aus SharePoint.</p>
+      </div>
+
+      <div class="va-card">
+        <div class="va-list-toolbar">
+          <div>
+            <div class="va-list-count"><strong id="va-result-count">–</strong> Anträge</div>
+            <p class="va-muted">Es werden maximal 100 Einträge geladen.</p>
+          </div>
+          <div class="va-list-actions">
+            <button type="button" id="neu-laden" class="va-secondary">↻ Aktualisieren</button>
+            <button type="button" id="post-bestaetigen" class="va-primary-button" hidden>
+              ✓ Weiterleitung per E-Mail bestätigen
+            </button>
+          </div>
+        </div>
+
+        <div id="antragsliste"><p class="va-loading">Anträge werden geladen …</p></div>
+
+        <div id="va-edit-panel" class="va-edit-panel" hidden>
+          <div class="va-edit-heading">
+            <h3>Status bearbeiten</h3>
+            <button type="button" id="va-edit-close" class="va-secondary">Schließen ✕</button>
+          </div>
+
+          <p id="va-edit-info" class="va-muted"></p>
+
+          <form id="va-edit-form">
+            <input type="hidden" id="va-edit-id" />
+            <div class="va-field">
+              <label for="va-edit-status">Neuer Status</label>
+              <select id="va-edit-status">
+                <option>Eingegangen</option>
+                <option>In Bearbeitung</option>
+                <option>Termin vereinbaren</option>
+                <option>Termin vereinbart</option>
+                <option>Rückfrage erwartet</option>
+                <option>Per Post an BAPersBw melden</option>
+                <option>Postalisch erledigt</option>
+                <option>Abgeschlossen</option>
+              </select>
+            </div>
+
+            <div class="va-form-footer">
+              <button type="button" id="va-edit-cancel" class="va-secondary">Abbrechen</button>
+              <button type="submit" id="va-edit-save" class="va-primary-button">Änderung speichern</button>
+            </div>
+
+            <div id="va-edit-message" class="va-message" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <p class="va-footer">Veteranenabzeichen · Antragsverwaltung</p>
+  </main>
+</div>
+
+<style>
+#veteranen-app {
+
+  --navy:#18334d;
+
+  --blue:#285b80;
+
+  --bg:#f3f6f9;
+
+  --border:#dce4eb;
+
+  --text:#263746;
+
+  --muted:#667787;
+
+  color:var(--text);
+
+  background:var(--bg);
+
+  border:0;
+
+  border-radius:0;
+
+  overflow:hidden;
+
+  display:block;
+
+  width:100%;
+
+  max-width:none;
+
+  margin:0;
+
+  box-sizing:border-box;
+
+  font-family:"Segoe UI",Arial,sans-serif;
+
+  font-size:14px;
+
+}
+
+/* Außenabstände im eingebetteten WebView reduzieren */
+html,
+body {
+  margin:0;
+  padding:0;
+}
+
+#veteranen-app .va-main {
+  width:100%;
+  max-width:none;
+  min-width:0;
+}
+
+/* Breite Bereiche dürfen nicht über den Bildschirm hinausragen */
+#veteranen-app .va-tiles,
+#veteranen-app .va-statistics-grid,
+#veteranen-app .va-fields {
+  width:100%;
+  min-width:0;
+}
+
+#veteranen-app .va-card {
+  min-width:0;
+}
+
+/* Tabellen bei Bedarf innerhalb ihres Bereichs scrollen */
+#veteranen-app #antragsliste {
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+}
+
+#veteranen-app *{box-sizing:border-box}
+#veteranen-app button,
+#veteranen-app input,
+#veteranen-app select,
+#veteranen-app textarea{font:inherit}
+#veteranen-app button{cursor:pointer}
+#veteranen-app [hidden]{display:none!important}
+
+#veteranen-app .va-header{
+  background:var(--navy);
+  color:white;
+  padding:22px 26px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px
+}
+#veteranen-app .va-brand{
+  color:white;
+  border:0;
+  background:transparent;
+  padding:0;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  text-align:left
+}
+#veteranen-app .va-emblem{
+  width:48px;
+  height:48px;
+  border:1px solid #91a8ba;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  font-weight:700;
+  letter-spacing:1px;
+  flex-shrink:0
+}
+#veteranen-app .va-brand-text{display:flex;flex-direction:column;gap:3px}
+#veteranen-app .va-brand-text strong{font-size:21px}
+#veteranen-app .va-eyebrow{font-size:10px;letter-spacing:1.8px;font-weight:700}
+#veteranen-app .va-brand-sub{color:#d5e0e9;font-size:12px}
+#veteranen-app .va-header-tag{
+  border:1px solid #58748a;
+  border-radius:20px;
+  padding:7px 12px;
+  color:#e0eaf1;
+  font-size:12px
+}
+#veteranen-app .va-topnav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  padding:8px 18px;
+  background:white;
+  border-bottom:1px solid var(--border)
+}
+#veteranen-app .va-nav{
+  border:0;
+  border-radius:6px;
+  background:transparent;
+  color:#40576a;
+  padding:10px 16px
+}
+#veteranen-app .va-nav:hover{background:#f0f4f7}
+#veteranen-app .va-nav.active{background:#e8f0f6;color:var(--navy);font-weight:700}
+#veteranen-app .va-main{padding:25px}
+#veteranen-app .va-welcome{
+  background:linear-gradient(115deg,#e7eef5,#f9fbfd);
+  border:1px solid #dce6ee;
+  border-radius:10px;
+  padding:27px;
+  margin-bottom:25px
+}
+#veteranen-app .va-welcome .va-eyebrow,
+#veteranen-app .va-page-heading .va-eyebrow{color:var(--blue)}
+#veteranen-app h1{
+  color:var(--navy);
+  font-size:27px;
+  line-height:1.25;
+  margin:8px 0
+}
+#veteranen-app h2{color:var(--navy);font-size:19px;margin:0 0 6px}
+#veteranen-app h3{color:var(--navy);font-size:17px;margin:0}
+#veteranen-app p{line-height:1.5}
+#veteranen-app .va-welcome p,
+#veteranen-app .va-page-heading p{color:var(--muted);margin:5px 0 0}
+#veteranen-app .va-home-heading{margin:0 0 14px}
+#veteranen-app .va-home-heading p{color:var(--muted);margin:0}
+#veteranen-app .va-tiles{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px
+}
+#veteranen-app .va-tile{
+  min-width:0;
+  min-height:175px;
+  padding:17px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:white;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+  gap:9px;
+  transition:transform .15s,box-shadow .15s,border-color .15s
+}
+#veteranen-app .va-tile-primary{background:#f0f5f9;border-color:#b8ccdb}
+#veteranen-app .va-tile:hover{
+  border-color:#91b0c7;
+  box-shadow:0 4px 14px rgba(24,51,77,.08);
+  transform:translateY(-1px)
+}
+#veteranen-app .va-tile-icon{
+  width:35px;
+  height:35px;
+  border-radius:8px;
+  background:#e9f0f6;
+  color:var(--blue);
+  display:grid;
+  place-items:center;
+  font-weight:700
+}
+#veteranen-app .va-tile-title{color:var(--navy);font-weight:700;font-size:15px}
+#veteranen-app .va-tile-description{color:var(--muted);font-size:12px;line-height:1.5}
+#veteranen-app .va-tile-arrow{margin-top:auto;color:var(--blue);font-size:12px;font-weight:700}
+
+#veteranen-app .va-page-heading{margin:18px 0 20px}
+#veteranen-app .va-back{border:0;background:transparent;padding:5px 0;color:var(--blue);font-weight:600}
+#veteranen-app .va-back:hover{text-decoration:underline}
+#veteranen-app .va-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:23px;
+  margin-bottom:20px
+}
+
+/* Statistik */
+#veteranen-app .va-statistics-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-bottom:20px
+}
+#veteranen-app .va-statistic-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:22px;
+  min-width:0
+}
+#veteranen-app .va-statistic-blue{border-top:4px solid #285b80}
+#veteranen-app .va-statistic-green{border-top:4px solid #37805a}
+#veteranen-app .va-statistic-icon{font-size:25px;margin-bottom:15px}
+#veteranen-app .va-statistic-label{font-size:13px;color:var(--muted);font-weight:600;line-height:1.5}
+#veteranen-app .va-statistic-card strong{
+  display:block;
+  font-size:38px;
+  line-height:1.2;
+  color:var(--navy);
+  margin:12px 0
+}
+#veteranen-app .va-statistic-card p{font-size:12px;color:var(--muted);margin:0}
+#veteranen-app .va-statistics-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px
+}
+#veteranen-app .va-statistics-footer p{margin-bottom:0}
+#veteranen-app .va-statistics-note{
+  color:var(--muted);
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px;
+  font-size:12px
+}
+
+#veteranen-app .va-fields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px 22px
+}
+#veteranen-app .va-field{min-width:0}
+#veteranen-app .va-field label{
+  display:block;
+  margin-bottom:7px;
+  color:#354b5d;
+  font-weight:600;
+  font-size:13px
+}
+#veteranen-app .va-field label span{color:#a33d36}
+#veteranen-app .va-field input,
+#veteranen-app .va-field select,
+#veteranen-app .va-field textarea{
+  width:100%;
+  min-height:41px;
+  padding:10px 11px;
+  border:1px solid #cbd6df;
+  border-radius:6px;
+  background:white;
+  color:var(--text)
+}
+#veteranen-app .va-field textarea{resize:vertical;min-height:85px}
+#veteranen-app .va-field input:focus,
+#veteranen-app .va-field select:focus,
+#veteranen-app .va-field textarea:focus{
+  outline:2px solid #8eb7d5;
+  outline-offset:1px;
+  border-color:var(--blue)
+}
+#veteranen-app .va-wide{grid-column:1/-1}
+#veteranen-app .va-form-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  border-top:1px solid #e7edf2;
+  padding-top:18px;
+  margin-top:22px
+}
+#veteranen-app .va-required{color:var(--muted);font-size:12px;margin:0}
+#veteranen-app .va-primary-button{
+  padding:11px 18px;
+  color:white;
+  background:var(--navy);
+  border:1px solid var(--navy);
+  border-radius:6px;
+  font-weight:700
+}
+#veteranen-app .va-primary-button:hover{background:#244966}
+#veteranen-app button:disabled{opacity:.6;cursor:wait}
+#veteranen-app .va-message{
+  display:none;
+  margin-top:16px;
+  padding:12px 14px;
+  border-radius:6px;
+  overflow-wrap:anywhere;
+  line-height:1.5
+}
+#veteranen-app .va-message.va-visible{display:block}
+#veteranen-app .va-message.va-success{background:#edf7f0;border:1px solid #c5e3ce;color:#205c36}
+#veteranen-app .va-message.va-error{background:#fff0ef;border:1px solid #efcbc8;color:#8b2f29}
+#veteranen-app .va-list-toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:17px
+}
+#veteranen-app .va-list-actions{display:flex;gap:8px;flex-wrap:wrap}
+#veteranen-app .va-list-count{color:var(--navy);font-size:17px}
+#veteranen-app .va-muted{color:var(--muted);font-size:12px;margin:4px 0 0}
+#veteranen-app .va-secondary{
+  border:1px solid #b9cbd9;
+  background:white;
+  color:var(--blue);
+  padding:9px 13px;
+  border-radius:6px;
+  font-weight:600
+}
+#veteranen-app .va-secondary:hover{background:#f1f6fa}
+#veteranen-app #antragsliste{overflow-x:auto}
+#veteranen-app table{width:100%;border-collapse:collapse;font-size:13px}
+#veteranen-app th{text-align:left;background:#f4f7fa;color:#42576a;font-weight:700;white-space:nowrap}
+#veteranen-app th,#veteranen-app td{border-bottom:1px solid #e5ebf0;padding:12px 10px;vertical-align:top}
+#veteranen-app tbody tr:hover{background:#f8fafc}
+#veteranen-app .va-status{
+  display:inline-block;
+  padding:4px 9px;
+  border-radius:20px;
+  background:#eaf1f7;
+  color:#285675;
+  font-size:12px;
+  white-space:nowrap
+}
+#veteranen-app .va-status.va-done{background:#e8f5ec;color:#24643a}
+#veteranen-app .va-status.va-wait{background:#fff3d9;color:#805a12}
+#veteranen-app .va-empty{
+  padding:26px 12px;
+  text-align:center;
+  color:var(--muted);
+  border:1px dashed #cad6e0;
+  border-radius:7px
+}
+#veteranen-app .va-loading{color:var(--muted);padding:12px 0}
+#veteranen-app .va-footer{text-align:center;color:var(--muted);font-size:12px;margin:22px 0 0}
+#veteranen-app .va-edit-panel{
+  margin-top:20px;
+  padding:20px;
+  background:#f0f5f9;
+  border:1px solid #cbdbe7;
+  border-radius:9px
+}
+#veteranen-app .va-edit-heading{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px
+}
+#veteranen-app .va-row-edit{
+  display:inline-block;
+  padding:6px 10px;
+  border:1px solid #b9cbd9;
+  border-radius:5px;
+  background:white;
+  color:#285b80;
+  font-weight:600;
+  white-space:nowrap
+}
+#veteranen-app .va-row-edit:hover{background:#eaf1f7}
+
+@media(max-width:850px){
+  #veteranen-app .va-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #veteranen-app .va-statistics-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  #veteranen-app .va-header{padding:17px}
+  #veteranen-app .va-brand-text strong{font-size:18px}
+  #veteranen-app .va-header-tag{display:none}
+  #veteranen-app .va-topnav{padding:7px}
+  #veteranen-app .va-nav{padding:10px;font-size:13px}
+  #veteranen-app .va-main{padding:13px}
+  #veteranen-app .va-welcome{padding:19px}
+  #veteranen-app .va-tiles{grid-template-columns:1fr;gap:10px}
+  #veteranen-app .va-tile{min-height:145px}
+  #veteranen-app .va-card{padding:15px}
+  #veteranen-app .va-fields{grid-template-columns:1fr;gap:15px}
+  #veteranen-app .va-wide{grid-column:auto}
+  #veteranen-app .va-form-footer{align-items:stretch;flex-direction:column}
+  #veteranen-app .va-form-footer .va-primary-button{width:100%}
+  #veteranen-app .va-statistics-grid{grid-template-columns:1fr}
+  #veteranen-app .va-statistics-footer{align-items:stretch;flex-direction:column}
+  #veteranen-app .va-statistics-footer .va-primary-button{width:100%}
+  #veteranen-app .va-list-actions{width:100%}
+  #veteranen-app .va-list-actions button{flex:1}
+}
+</style>
+
+<script>
+(async function () {
+  const liste = "Veteranenabzeichen-Anträge";
+  const basis = window._spPageContextInfo.webAbsoluteUrl;
+  const api = basis + "/_api/web/lists/getbytitle('" + liste + "')";
+  const root = document.getElementById("veteranen-app");
+  const form = document.getElementById("antrag-form");
+  const speichern = document.getElementById("speichern");
+  const statusMeldung = document.getElementById("app-status");
+  const ausgabe = document.getElementById("antragsliste");
+  const neuLaden = document.getElementById("neu-laden");
+  const postBestaetigen = document.getElementById("post-bestaetigen");
+  const statistikNeuLaden = document.getElementById("statistik-neu-laden");
+  const statistikMeldung = document.getElementById("statistik-meldung");
+
+  const feldAntragVom = "Antrag_x0020_vom";
+  const statusPost = "Per Post an BAPersBw melden";
+  const statusErledigt = "Postalisch erledigt";
+  const statusAbgeschlossen = "Abgeschlossen";
+
+  const statusWerte = [
+    "Eingegangen", "In Bearbeitung", "Termin vereinbaren",
+    "Termin vereinbart", "Rückfrage erwartet", statusPost,
+    statusErledigt, statusAbgeschlossen
+  ];
+
+  let alleEintraege = [];
+  let aktuelleSeite = "home";
+  let aktuellerStatus = "";
+
+  const editPanel = document.getElementById("va-edit-panel");
+  const editForm = document.getElementById("va-edit-form");
+  const editId = document.getElementById("va-edit-id");
+  const editStatus = document.getElementById("va-edit-status");
+  const editInfo = document.getElementById("va-edit-info");
+  const editMessage = document.getElementById("va-edit-message");
+  const editSave = document.getElementById("va-edit-save");
+
+  function sicher(text) {
+    return String(text == null ? "" : text).replace(/[&<>"']/g, function (c) {
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  function datumAnzeigen(wert) {
+    if (!wert) return "";
+    const d = new Date(wert);
+    return isNaN(d.getTime()) ? "" : d.toLocaleDateString("de-DE");
+  }
+
+  function datumFeld(id) {
+    const wert = document.getElementById(id).value;
+    return wert ? new Date(wert + "T12:00:00").toISOString() : null;
+  }
+
+  function meldung(text, art) {
+    statusMeldung.textContent = text;
+    statusMeldung.className = "va-message va-visible " +
+      (art === "error" ? "va-error" : "va-success");
+  }
+
+  function statistikHinweis(text, fehler) {
+    statistikMeldung.textContent = text;
+    statistikMeldung.className = "va-message va-visible " +
+      (fehler ? "va-error" : "va-success");
+  }
+
+  function statistikAktualisieren() {
+    const berlin = alleEintraege.filter(function (item) {
+      return item.Status === statusAbgeschlossen;
+    }).length;
+
+    const postalisch = alleEintraege.filter(function (item) {
+      return item.Status === statusErledigt;
+    }).length;
+
+    document.getElementById("stat-berlin").textContent = berlin;
+    document.getElementById("stat-postalisch").textContent = postalisch;
+    document.getElementById("stat-gesamt").textContent = alleEintraege.length;
+  }
+
+  function editMeldung(text, fehler) {
+    editMessage.textContent = text;
+    editMessage.className = "va-message va-visible " +
+      (fehler ? "va-error" : "va-success");
+  }
+
+  function editSchliessen() {
+    editPanel.hidden = true;
+    editForm.reset();
+    editMessage.className = "va-message";
+  }
+
+  function seiteAnzeigen(seite, statusFilter) {
+    aktuelleSeite = seite;
+    aktuellerStatus = statusFilter || "";
+
+    root.querySelectorAll(".va-page").forEach(function (element) {
+      element.hidden = true;
+    });
+
+    root.querySelectorAll(".va-nav").forEach(function (button) {
+      button.classList.toggle("active", button.dataset.page === seite);
+    });
+
+    if (seite === "home") {
+      document.getElementById("va-home").hidden = false;
+    } else if (seite === "statistics") {
+      document.getElementById("va-statistics-page").hidden = false;
+      statistikAktualisieren();
+      statistikMeldung.className = "va-message";
+    } else if (seite === "form") {
+      document.getElementById("va-form-page").hidden = false;
+      statusMeldung.className = "va-message";
+    } else {
+      document.getElementById("va-list-page").hidden = false;
+
+      const titel = document.getElementById("va-list-title");
+      const beschreibung = document.getElementById("va-list-description");
+
+      if (seite === "all") {
+        titel.textContent = "Alle Anträge";
+        beschreibung.textContent = "Alle geladenen Anträge aus SharePoint.";
+      } else {
+        titel.textContent = aktuellerStatus === statusPost
+          ? "Post an BAPersBw"
+          : aktuellerStatus === statusErledigt
+            ? "Postalisch abgeschlossen"
+            : aktuellerStatus;
+
+        beschreibung.textContent =
+          'Anträge mit dem Status "' + aktuellerStatus + '".';
+      }
+
+      postBestaetigen.hidden =
+        !(seite === "status" && aktuellerStatus === statusPost);
+
+      listeRendern();
+    }
+
+    if (seite !== "home") {
+      root.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+  }
+
+  root.addEventListener("click", function (event) {
+    const editButton = event.target.closest("button[data-edit-id]");
+
+    if (editButton && root.contains(editButton)) {
+      const id = Number(editButton.dataset.editId);
+      const item = alleEintraege.find(function (eintrag) {
+        return Number(eintrag.Id) === id;
+      });
+
+      if (!item) {
+        alert("Der Antrag wurde nicht gefunden. Bitte aktualisiere die Liste.");
+        return;
+      }
+
+      editId.value = item.Id;
+      editStatus.value = statusWerte.includes(item.Status)
+        ? item.Status : "Eingegangen";
+
+      editInfo.textContent = "Antrag: " + (item.Title || "") + " " +
+        (item.Nachname || "") +
+        (item.Aktenzeichen ? " · Aktenzeichen: " + item.Aktenzeichen : "");
+
+      editMessage.className = "va-message";
+      editPanel.hidden = false;
+      editPanel.scrollIntoView({behavior:"smooth", block:"center"});
+      return;
+    }
+
+    const button = event.target.closest("button[data-page]");
+    if (!button || !root.contains(button)) return;
+
+    seiteAnzeigen(button.dataset.page, button.dataset.status || "");
+  });
+
+  function listeRendern() {
+    let gefiltert = alleEintraege.slice();
+
+    if (aktuelleSeite === "status") {
+      gefiltert = gefiltert.filter(function (item) {
+        return item.Status === aktuellerStatus;
+      });
+    }
+
+    document.getElementById("va-result-count").textContent = gefiltert.length;
+
+    if (!gefiltert.length) {
+      ausgabe.innerHTML =
+        '<div class="va-empty">Keine passenden Anträge gefunden.</div>';
+      return;
+    }
+
+    let html = "<table><thead><tr>" +
+      "<th>Vorname</th><th>Nachname</th><th>E-Mail</th>" +
+      "<th>Aktenzeichen</th><th>Antrag vom</th><th>Eingangsdatum</th>" +
+      "<th>Status</th><th>Termin</th><th>Wiedervorlage</th><th>Aktion</th>" +
+      "</tr></thead><tbody>";
+
+    gefiltert.forEach(function (item) {
+      const s = String(item.Status || "");
+      const statusKlasse =
+        s === statusAbgeschlossen || s === statusErledigt ? "va-done" :
+        s === "Rückfrage erwartet" || s === "Termin vereinbaren" ? "va-wait" : "";
+
+      const email = String(item.Email || "");
+      const emailAnzeige = email
+        ? '<a href="mailto:' + sicher(email) + '">' + sicher(email) + '</a>'
+        : "";
+
+      html += "<tr>" +
+        "<td>" + sicher(item.Title) + "</td>" +
+        "<td>" + sicher(item.Nachname) + "</td>" +
+        "<td>" + emailAnzeige + "</td>" +
+        "<td>" + sicher(item.Aktenzeichen) + "</td>" +
+        "<td>" + sicher(datumAnzeigen(item[feldAntragVom])) + "</td>" +
+        "<td>" + sicher(datumAnzeigen(item.Eingangsdatum)) + "</td>" +
+        '<td><span class="va-status ' + statusKlasse + '">' +
+        sicher(s || "Kein Status") + "</span></td>" +
+        "<td>" + sicher(datumAnzeigen(item.Termin)) + "</td>" +
+        "<td>" + sicher(datumAnzeigen(item.Wiedervorlage)) + "</td>" +
+        '<td><button type="button" class="va-row-edit" data-edit-id="' +
+        Number(item.Id) + '">Bearbeiten</button></td>' +
+        "</tr>";
+    });
+
+    ausgabe.innerHTML = html + "</tbody></table>";
+  }
+
+  async function laden() {
+    const url = api +
+      "/items?$select=Id,Title,Nachname,Email," + feldAntragVom +
+      ",Aktenzeichen,Eingangsdatum,Status,Termin,Wiedervorlage,Bemerkung" +
+      "&$top=100&$orderby=Id desc";
+
+    const antwort = await fetch(url, {
+      headers: {"Accept":"application/json;odata=nometadata"},
+      credentials: "same-origin"
+    });
+
+    if (!antwort.ok) {
+      const fehlerText = await antwort.text();
+      throw new Error(
+        "Antragsliste konnte nicht geladen werden (HTTP " +
+        antwort.status + "). " + fehlerText.substring(0,250) +
+        " Prüfe insbesondere den internen Spaltennamen von „Antrag vom“."
+      );
+    }
+
+    const daten = await antwort.json();
+    alleEintraege = daten.value || [];
+
+    statistikAktualisieren();
+    listeRendern();
+  }
+
+  async function sicherheitstokenHolen() {
+    const antwort = await fetch(basis + "/_api/contextinfo", {
+      method: "POST",
+      headers: {"Accept":"application/json;odata=verbose"},
+      credentials: "same-origin"
+    });
+
+    if (!antwort.ok) {
+      throw new Error("Sicherheitstoken konnte nicht geladen werden (HTTP " +
+        antwort.status + ").");
+    }
+
+    const daten = await antwort.json();
+    return daten.d.GetContextWebInformation.FormDigestValue;
+  }
+
+  async function listenTypHolen() {
+    const antwort = await fetch(api + "?$select=ListItemEntityTypeFullName", {
+      headers: {"Accept":"application/json;odata=verbose"},
+      credentials: "same-origin"
+    });
+
+    if (!antwort.ok) {
+      throw new Error("SharePoint-Listeneinstellungen konnten nicht gelesen werden.");
+    }
+
+    const daten = await antwort.json();
+    return daten.d.ListItemEntityTypeFullName;
+  }
+
+  async function statusSetzen(id, neuerStatus, digest, typ) {
+    const antwort = await fetch(api + "/items(" + id + ")", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json;odata=verbose",
+        "Content-Type": "application/json;odata=verbose",
+        "X-RequestDigest": digest,
+        "X-HTTP-Method": "MERGE",
+        "IF-MATCH": "*"
+      },
+      credentials: "same-origin",
+      body: JSON.stringify({
+        "__metadata": {"type": typ},
+        "Status": neuerStatus
+      })
+    });
+
+    if (!antwort.ok) {
+      const text = await antwort.text();
+      throw new Error("HTTP " + antwort.status + ": " + text.substring(0,180));
+    }
+  }
+
+  postBestaetigen.addEventListener("click", async function () {
+    const zuBearbeiten = alleEintraege.filter(function (item) {
+      return item.Status === statusPost;
+    });
+
+    if (!zuBearbeiten.length) {
+      alert("Es gibt keine Anträge, die auf die E-Mail-Weiterleitung warten.");
+      return;
+    }
+
+    const bestaetigt = window.confirm(
+      "Bitte bestätige:\n\n" +
+      "Hast du die Anträge tatsächlich per E-Mail an BAPersBw weitergeleitet?\n\n" +
+      zuBearbeiten.length + " Antrag/Anträge werden auf „" +
+      statusErledigt + "“ gesetzt.\n\n" +
+      "Dieser Vorgang versendet keine E-Mail."
+    );
+
+    if (!bestaetigt) return;
+
+    postBestaetigen.disabled = true;
+    postBestaetigen.textContent = "Wird verarbeitet …";
+
+    let erfolgreich = 0;
+    const fehlerListe = [];
+
+    try {
+      const digest = await sicherheitstokenHolen();
+      const typ = await listenTypHolen();
+
+      for (const item of zuBearbeiten) {
+        try {
+          await statusSetzen(item.Id, statusErledigt, digest, typ);
+          erfolgreich++;
+        } catch (fehler) {
+          fehlerListe.push(
+            (item.Title || "") + " " + (item.Nachname || "") +
+            " (ID " + item.Id + "): " + fehler.message
+          );
+        }
+      }
+
+      await laden();
+
+      if (fehlerListe.length === 0) {
+        alert(
+          "Erfolgreich erledigt!\n\n" + erfolgreich +
+          " Antrag/Anträge wurden auf „" + statusErledigt + "“ gesetzt."
+        );
+      } else {
+        alert(
+          "Die Verarbeitung ist teilweise abgeschlossen.\n\n" +
+          "Erfolgreich geändert: " + erfolgreich +
+          "\nFehlgeschlagen: " + fehlerListe.length +
+          "\n\nFehlerdetails:\n" + fehlerListe.join("\n")
+        );
+      }
+
+      seiteAnzeigen("status", statusPost);
+    } catch (fehler) {
+      alert(
+        "Die Sammelverarbeitung konnte nicht vollständig gestartet werden:\n" +
+        fehler.message
+      );
+
+      try { await laden(); } catch (_) {}
+    } finally {
+      postBestaetigen.disabled = false;
+      postBestaetigen.textContent = "✓ Weiterleitung per E-Mail bestätigen";
+    }
+  });
+
+  neuLaden.addEventListener("click", async function () {
+    neuLaden.disabled = true;
+    neuLaden.textContent = "Wird geladen …";
+
+    try {
+      await laden();
+    } catch (fehler) {
+      ausgabe.textContent = fehler.message;
+    } finally {
+      neuLaden.disabled = false;
+      neuLaden.textContent = "↻ Aktualisieren";
+    }
+  });
+
+  statistikNeuLaden.addEventListener("click", async function () {
+    statistikNeuLaden.disabled = true;
+    statistikNeuLaden.textContent = "Wird aktualisiert …";
+    statistikMeldung.className = "va-message";
+
+    try {
+      await laden();
+      statistikAktualisieren();
+      statistikHinweis("Die Statistik wurde aktualisiert.", false);
+    } catch (fehler) {
+      statistikHinweis("Aktualisierung fehlgeschlagen: " + fehler.message, true);
+    } finally {
+      statistikNeuLaden.disabled = false;
+      statistikNeuLaden.textContent = "↻ Statistik aktualisieren";
+    }
+  });
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    speichern.disabled = true;
+    statusMeldung.className = "va-message";
+    statusMeldung.textContent = "";
+
+    try {
+      const vorname = document.getElementById("vorname").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (!vorname) throw new Error("Bitte gib einen Vornamen ein.");
+
+      const digest = await sicherheitstokenHolen();
+      const typ = await listenTypHolen();
+
+      const eintrag = {
+        "__metadata": {"type": typ},
+        "Title": vorname,
+        "Nachname": document.getElementById("nachname").value.trim(),
+        "Email": email,
+        [feldAntragVom]: datumFeld("antragVom"),
+        "Aktenzeichen": document.getElementById("aktenzeichen").value.trim(),
+        "Eingangsdatum": datumFeld("eingangsdatum"),
+        "Status": document.getElementById("status").value,
+        "Termin": datumFeld("termin"),
+        "Wiedervorlage": datumFeld("wiedervorlage"),
+        "Bemerkung": document.getElementById("bemerkung").value.trim()
+      };
+
+      const antwort = await fetch(api + "/items", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json;odata=verbose",
+          "Content-Type": "application/json;odata=verbose",
+          "X-RequestDigest": digest
+        },
+        credentials: "same-origin",
+        body: JSON.stringify(eintrag)
+      });
+
+      if (!antwort.ok) {
+        const text = await antwort.text();
+        throw new Error("SharePoint hat nicht gespeichert (HTTP " +
+          antwort.status + "). " + text.substring(0,350));
+      }
+
+      meldung("Der Antrag wurde erfolgreich in SharePoint gespeichert.", "success");
+      form.reset();
+
+      try {
+        await laden();
+        seiteAnzeigen("all");
+      } catch (fehler) {
+        meldung(
+          "Der Antrag wurde gespeichert. Die Liste konnte nicht aktualisiert werden: " +
+          fehler.message,
+          "error"
+        );
+      }
+    } catch (fehler) {
+      meldung("Speichern fehlgeschlagen: " + fehler.message, "error");
+    } finally {
+      speichern.disabled = false;
+    }
+  });
+
+  document.getElementById("va-edit-close").addEventListener("click", editSchliessen);
+  document.getElementById("va-edit-cancel").addEventListener("click", editSchliessen);
+
+  editForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    editSave.disabled = true;
+    editMessage.className = "va-message";
+
+    try {
+      const id = Number(editId.value);
+      const neuerStatus = editStatus.value;
+
+      if (!id || !statusWerte.includes(neuerStatus)) {
+        throw new Error("Bitte wähle einen gültigen Status.");
+      }
+
+      const digest = await sicherheitstokenHolen();
+      const typ = await listenTypHolen();
+
+      await statusSetzen(id, neuerStatus, digest, typ);
+      await laden();
+
+      editPanel.hidden = false;
+      editMeldung("Status wurde erfolgreich geändert.", false);
+      listeRendern();
+    } catch (fehler) {
+      editMeldung("Fehler: " + fehler.message, true);
+    } finally {
+      editSave.disabled = false;
+    }
+  });
+
+  try {
+    await laden();
+  } catch (fehler) {
+    ausgabe.textContent = fehler.message;
+    document.getElementById("stat-berlin").textContent = "!";
+    document.getElementById("stat-postalisch").textContent = "!";
+    document.getElementById("stat-gesamt").textContent = "!";
+  }
+
+  seiteAnzeigen("home");
+})();
+</script>
